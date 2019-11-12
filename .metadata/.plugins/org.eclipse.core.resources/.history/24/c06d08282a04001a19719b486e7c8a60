@@ -1,0 +1,34 @@
+package Practice1;
+
+import java.util.ArrayList;
+
+import array.Book;
+
+public class Student {
+
+	int studentID;
+	String name;
+
+	ArrayList<String> bookList;
+	
+	public Student(int studentID, String name) {
+		this.studentID = studentID;
+		this.name = name;
+		
+		bookList = new ArrayList<String>();
+	}
+	
+	public void addBook(String name) {
+		
+		Book book = new Book(name);
+		
+		bookList.add(book);
+	}
+	
+	public void showInfo() {
+		for(Book b: book) {
+			b.getTitle();
+		}
+	}
+	
+}

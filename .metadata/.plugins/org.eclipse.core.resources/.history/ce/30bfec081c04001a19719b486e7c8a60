@@ -1,0 +1,12 @@
+package array;
+
+public class CharArrayTest {
+
+	public static void main(String[] args) {
+		
+		char[] arr = new char[26];
+		System.out.println(chr('A'));
+
+	}
+
+}

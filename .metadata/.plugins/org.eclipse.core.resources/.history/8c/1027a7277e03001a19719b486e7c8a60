@@ -1,0 +1,12 @@
+package classpart;
+
+public class Order {
+
+	String orderNumber;
+	String customerID;
+	String orderDate;
+	String cutomerName;
+	String productID;
+	String address;
+	
+}

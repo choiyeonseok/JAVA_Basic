@@ -1,0 +1,39 @@
+package innerclass;
+
+class OutClass{
+	
+	private int num = 10;
+	private static int sNum = 20;
+	private InClass inClass;
+	
+	public OutClass(){
+		inClass = new InClass();
+	}
+	
+	class InClass{
+		int iNum = 100;
+		
+		void inTest() {
+			System.out.println(num);
+			System.out.println(sNum);
+		}
+	}
+	
+	public void usingInner() {
+		inClass.inTest();
+	}
+	
+}
+
+public class InnerTest {
+
+	public static void main(String[] args) {
+		
+		OutClass outClass = new OutClass();
+		outClass.usingInner();
+		
+		OutClass.InClass myInClass = outClass.new InClass(); //잘 쓰지는 않음
+		myInClass.inTest();
+	}
+
+}

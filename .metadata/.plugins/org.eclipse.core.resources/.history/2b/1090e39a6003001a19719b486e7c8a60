@@ -1,0 +1,21 @@
+package ifexample;
+
+public class BreakExample {
+
+	public static void main(String[] args) {
+		
+		int sum = 0;
+		int num;
+		for(num = 1; num <= 100; num++) {
+			
+			sum += num;
+			
+		}
+		
+		System.out.println(sum);
+		System.out.println(num);
+		
+
+	}
+
+}

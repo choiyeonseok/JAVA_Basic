@@ -1,0 +1,8 @@
+package collection.hashmap;
+
+public class MemberHashMap {
+
+	public HashMap<Integer, Member> hashMap;
+	
+	
+}

@@ -1,0 +1,11 @@
+package collectionset;
+
+public class MemberHashSet {
+
+	private HashSet<Member> hashSet;
+	
+	public MemberHashSet() {
+		hashSet = new HashSet<Member>();
+	}
+	
+}

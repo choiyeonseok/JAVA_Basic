@@ -1,0 +1,18 @@
+package paractice;
+
+public abstract class PlayerLevel {
+
+	public void run() {};
+	public void jump() {};
+	public void turn() {};
+	public void showPlayerLevel() {};
+	
+	final public void go(int n) {
+		run();
+		for(int i=0; i<n; i++) {
+			jump();
+		}
+		turn();
+	}
+	
+}

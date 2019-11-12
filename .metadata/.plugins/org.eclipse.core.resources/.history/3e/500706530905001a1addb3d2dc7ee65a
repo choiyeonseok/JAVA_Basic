@@ -1,0 +1,15 @@
+package paractice;
+
+public class Player {
+
+	PlayerLevel level;
+	
+	public void upgradeLevel(PlayerLevel level) {
+		this.level = level;
+	}
+	
+	public void play(int n) {
+		level.go(n);
+	}
+	
+}
