@@ -26,8 +26,7 @@ public class TravelCustomerTest {
 		System.out.println(total);
 		
 		customerList.stream().filter(c->c.getAge() >= 20).forEach(s->System.out.println(s));
-		
-		
+
 	}
 
 }
