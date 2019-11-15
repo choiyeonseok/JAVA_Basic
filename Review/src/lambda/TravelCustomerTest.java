@@ -18,7 +18,6 @@ public class TravelCustomerTest {
 		for (TravelCustomer customer: customerList) {
 			System.out.println(customer.toString());
 		}
-		
 
 		customerList.stream().map(s->s.getName()).forEach(c -> System.out.println(c));
 		
