@@ -3,7 +3,7 @@ package stream.outputstream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class FileOutputTest1 {
+public class FileOutputTest2 {
 
 	public static void main(String[] args) {
 		

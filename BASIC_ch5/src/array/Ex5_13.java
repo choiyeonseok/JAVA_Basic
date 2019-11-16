@@ -8,6 +8,7 @@ public class Ex5_13 {
 		
 		String[] words = {"television", "computer", "mouse", "phone"};
 		
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		
 		for(int i=0; i<words.length; i++) {

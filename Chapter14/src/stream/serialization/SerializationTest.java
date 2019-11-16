@@ -23,7 +23,7 @@ class Person implements Serializable {
 
 public class SerializationTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException {
 	
 		Person personLee = new Person("이순신 ", "엔지니어");
 		Person personKim = new Person("김유신 ", "선생님");
