@@ -9,7 +9,8 @@ public class Ex7_28 {
 		
 		Frame f = new Frame();
 		f.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
+			
+			public void windowClosing(WindowEvent e) {  //EventHandler라는 중간 클래스의 이름이 사라짐.
 				e.getWindow().setVisible(false);
 				e.getWindow().dispose();
 				System.exit(0);
@@ -18,4 +19,3 @@ public class Ex7_28 {
 	}
 
 }
-
