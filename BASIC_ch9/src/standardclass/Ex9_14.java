@@ -36,16 +36,16 @@ public class Ex9_14 {
 			
 			for(int i=0; i<phoneNumArr.length; i++) {
 				String phoneNum = phoneNumArr[i];
-				String tmp = phoneNum.replace("-",  "");
+				String tmp = phoneNum.replace("-",  "");  //전화번호에서 "-" 빼기
 				
 				Matcher m =p.matcher(tmp);
 				
-				if(m.find()) {
+				if(m.find()) {        //패턴과 일치하면, list에 phoneNum을 추가한다.
 					list.add(phoneNum);
 				}
 			}
 			
-			if(list.size()>0) {
+			if(list.size()>0) {       //검색결과가 있으면 출력하고 결과를 삭제
 				System.out.println(list);
 				list.clear();
 			} else {
