@@ -11,6 +11,18 @@ public class Player {
 		playerNums = new int[3];
 	}
 	
+	void createNumbers() {
+		int inputValue;
+		int[] inputArray;
+		
+		do {
+			inputValue = inputValue();
+			inputArray = toIntArray(inputValue);
+		}while(!isThreeDigits(inputValue) | hasZero(inputArray) | isDuplicated(inputArray));
+		
+		System.arraycopy(inputArray, 0, playerNums, 0, playerNums.length);
+	}
+	
 	int inputValue() {
 		Scanner input = new Scanner(System.in);
 		return input.nextInt(); 
@@ -51,6 +63,5 @@ public class Player {
 		}
 		return count;
 	}
-	
 	
 }
