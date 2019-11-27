@@ -14,7 +14,8 @@ public class test {
 		comp.showInfo();
 	
 		Player player = new Player();
-		
+		player.createNumbers();
+		System.out.println(Arrays.toString(player.playerNums));
 	}
 	
 }

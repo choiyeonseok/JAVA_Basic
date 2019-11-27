@@ -1,5 +1,6 @@
 package baseballgame;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
@@ -14,19 +15,27 @@ public class Player {
 	void createNumbers() {
 		int inputValue;
 		int[] inputArray;
-		
 		do {
 			inputValue = inputValue();
 			inputArray = toIntArray(inputValue);
 		}while(!isThreeDigits(inputValue) | hasZero(inputArray) | isDuplicated(inputArray));
-		
 		System.arraycopy(inputArray, 0, playerNums, 0, playerNums.length);
 	}
 	
 	int inputValue() {
 		Scanner input = new Scanner(System.in);
 		System.out.print("숫자를 입력해주세요 : ");
-		return input.nextInt(); 
+		int inputValue;
+		while(true) {
+			try {
+				inputValue = input.nextInt();
+				break;
+			} catch(InputMismatchException e){
+				System.out.print("숫자를 입력해주세요 : ");
+				input = new Scanner(System.in);
+			} catch (Exception e) {	}
+		}
+		return inputValue;
 	}
 	
 	int[] toIntArray(int inputNum) {
