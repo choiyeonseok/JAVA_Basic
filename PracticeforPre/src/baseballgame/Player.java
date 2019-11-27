@@ -33,4 +33,24 @@ public class Player {
 		return IntStream.of(inputNums).anyMatch(i -> i == 0);
 	}
 	
+	boolean isDuplicated(int[] inputNums) {
+		for (int number : inputNums) {
+			if (countValue(inputNums, number) >= 2) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	int countValue(int[] inputNums, int target) {
+		int count = 0;
+		for (int number : inputNums) {
+			if (number == target) {
+				count++;
+			}
+		}
+		return count;
+	}
+	
+	
 }
