@@ -1,5 +1,6 @@
 package baseballgame;
 
+import java.util.Arrays;
 
 public class Computer {
 
@@ -42,4 +43,9 @@ public class Computer {
 		}
 		return false;
 	}
+	
+	void showInfo() {
+		System.out.println(Arrays.toString(comNums));
+	}
+	
 }
