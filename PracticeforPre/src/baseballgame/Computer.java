@@ -39,7 +39,9 @@ public class Computer {
 	
 	boolean dupliCheck(int[] comNums, int rand) {
 		for (int number : comNums) {
-			return number == rand;
+			if (number == rand) {
+				return true;
+			}
 		}
 		return false;
 	}
