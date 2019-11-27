@@ -9,6 +9,14 @@ public class Computer {
 		comNums = new int[3];
 	}
 	
+	int getNotDuplicated() {
+		int rand;
+		do {
+			rand = getExceptZero();
+		} while (dupliCheck(comNums, rand));
+		return rand;
+	}
+	
 	int getRandNum() {
 		return (int)(Math.random() * 10);
 	}
