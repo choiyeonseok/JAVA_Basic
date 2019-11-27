@@ -1,6 +1,7 @@
 package baseballgame;
 
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class Player {
 
@@ -28,5 +29,8 @@ public class Player {
 		return (int)(Math.log10(inputNum) + 1) == 3;
 	}
 	
+	boolean hasZero(int[] inputNums) {
+		return IntStream.of(inputNums).anyMatch(i -> i == 0);
+	}
 	
 }
