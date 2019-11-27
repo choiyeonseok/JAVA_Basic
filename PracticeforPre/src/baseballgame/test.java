@@ -6,8 +6,7 @@ public class test {
 
 		BaseballGame game = new BaseballGame();
 		game.play();
-		
-		
+	
 	}
 
 }
