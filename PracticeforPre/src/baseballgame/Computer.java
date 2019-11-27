@@ -9,6 +9,12 @@ public class Computer {
 		comNums = new int[3];
 	}
 	
+	void createNumbers() {
+		for (int i = 0; i < comNums.length; i++) {
+			comNums[i] = getNotDuplicated();
+		}
+	}
+	
 	int getNotDuplicated() {
 		int rand;
 		do {
