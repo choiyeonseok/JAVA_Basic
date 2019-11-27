@@ -10,6 +10,10 @@ public class test {
 		Computer comp = new Computer();
 		comp.createNumbers();
 		comp.showInfo();
+	
+		Player player = new Player();
+		player.showInfo();
+	
 	}
-
+	
 }
