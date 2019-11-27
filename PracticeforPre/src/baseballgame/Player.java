@@ -24,4 +24,9 @@ public class Player {
 		return tmpArray;
 	}
 	
+	boolean isThreeDigits(int inputNum) {
+		return (int)(Math.log10(inputNum) + 1) == 3;
+	}
+	
+	
 }
