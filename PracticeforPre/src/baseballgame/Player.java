@@ -15,4 +15,13 @@ public class Player {
 		return input.nextInt(); 
 	}
 	
+	int[] toIntArray(int inputNum) {
+		int[] tmpArray = new int[3];
+		for (int i = 0; i < tmpArray.length; i++) {
+			tmpArray[i] = (int) (inputNum / Math.pow(10, 2-i));
+			inputNum %= Math.pow(10, 2-i);
+		}
+		return tmpArray;
+	}
+	
 }
