@@ -2,9 +2,6 @@ package baseballgame;
 
 
 public class BaseballGame {
-
-	int strike;
-	int ball;
 	
 	Computer com;
 	Player player;
@@ -12,12 +9,11 @@ public class BaseballGame {
 	BaseballGame(){
 		com = new Computer();
 		player = new Player();
-		com.createNumbers();
-		player.createNumbers();
+		
 	}
 	
 	int calcStrike() {
-		strike = 0;
+		int strike = 0;
 		for (int i = 0; i < 3; i++) {
 			if (com.comNums[i] == player.playerNums[i]) {
 				strike++;
@@ -25,5 +21,26 @@ public class BaseballGame {
 		}
 		return strike;
 	}
+	
+	int calcBall() {
+		int ball = 0;
+		for (int i = 0; i < 3; i++) {
+			if ((com.comNums[i] != player.playerNums[i]) &&
+					checkContain(com.comNums, player.playerNums[i])) {
+				ball++;
+			}
+		}
+		return ball;
+	}
+	
+	boolean checkContain(int[] array, int value) {
+		for (int number : array) {
+			if (number == value) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	
 }
