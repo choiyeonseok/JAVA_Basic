@@ -87,21 +87,30 @@ public class BaseballGame {
 		return false;
 	}
 	
-	void replayOrNot() {
+	void replayOrNot(){
 		Scanner input = new Scanner(System.in);
 		int inputValue = 0;
-		
-		try{
-			inputValue = input.nextInt();
-		} catch(InputMismatchException e){
-			checkAnswer();
-			input = new Scanner(System.in);
-		} catch (Exception e) {	}
+		while(true) {
+			try{
+				inputValue = input.nextInt();
+				createException(inputValue);
+				break;
+			} catch(InputMismatchException e){
+				checkAnswer();
+				input = new Scanner(System.in);
+			} catch (Exception e) {	}
+			
+		}
 		
 		if (inputValue == 2) {
 			System.exit(0);
-		}
+		} 
 	}
 	
+	void createException(int inputValue) {
+		if (inputValue != 1 && inputValue != 2) {
+			throw new InputMismatchException();
+		}
+	}
 	
 }
