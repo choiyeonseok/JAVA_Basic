@@ -19,14 +19,11 @@ public class BaseballGame {
 	void play() {
 		while(true) {
 			com.createNumbers();
-			com.showInfo();
-			boolean correct = false;
 			do {
 				player.createNumbers();
 				calculateScore();
 				showResult();
-				correct = checkAnswer();
-			} while(!correct);
+			} while(!checkAnswer());
 			replayOrNot();
 		}
 		
@@ -99,9 +96,7 @@ public class BaseballGame {
 				checkAnswer();
 				input = new Scanner(System.in);
 			} catch (Exception e) {	}
-			
 		}
-		
 		if (inputValue == 2) {
 			System.exit(0);
 		} 
