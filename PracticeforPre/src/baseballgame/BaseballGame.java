@@ -1,36 +1,59 @@
 package baseballgame;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class BaseballGame {
+	
+	int strike;
+	int ball;
 	
 	Computer com;
 	Player player;
 	
 	BaseballGame(){
 		com = new Computer();
-		player = new Player();
+		player = new Player();	
+	}
+	
+	void play() {
+		while(true) {
+			com.createNumbers();
+			com.showInfo();
+			boolean correct = false;
+			do {
+				player.createNumbers();
+				calculateScore();
+				showResult();
+				correct = checkAnswer();
+			} while(!correct);
+			replayOrNot();
+		}
 		
 	}
 	
-	int calcStrike() {
-		int strike = 0;
+	void calculateScore() {
+		calcStrike();
+		calcBall();
+	}
+	
+	void calcStrike() {
+		strike = 0;
 		for (int i = 0; i < 3; i++) {
 			if (com.comNums[i] == player.playerNums[i]) {
 				strike++;
 			}
 		}
-		return strike;
 	}
 	
-	int calcBall() {
-		int ball = 0;
+	void calcBall() {
+		ball = 0;
 		for (int i = 0; i < 3; i++) {
 			if ((com.comNums[i] != player.playerNums[i]) &&
 					checkContain(com.comNums, player.playerNums[i])) {
 				ball++;
 			}
 		}
-		return ball;
 	}
 	
 	boolean checkContain(int[] array, int value) {
@@ -41,6 +64,6 @@ public class BaseballGame {
 		}
 		return false;
 	}
-	
+
 	
 }

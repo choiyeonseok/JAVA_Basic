@@ -6,16 +6,19 @@ public class test {
 
 	public static void main(String[] args) {
 
-//		BaseballGame game = new BaseballGame();
-//		game.play();
-	
-		Computer comp = new Computer();
-		comp.createNumbers();
-		comp.showInfo();
-	
-		Player player = new Player();
-		player.createNumbers();
-		System.out.println(Arrays.toString(player.playerNums));
+//		Computer comp = new Computer();
+//		comp.createNumbers();
+//		comp.showInfo();
+//	
+//		Player player = new Player();
+//		player.createNumbers();
+//		System.out.println(Arrays.toString(player.playerNums));
+//		
+		
+		BaseballGame game = new BaseballGame();
+		game.play();
+		
+		
 	}
 	
 }
