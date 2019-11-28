@@ -64,6 +64,20 @@ public class BaseballGame {
 		}
 		return false;
 	}
+	
+	void showResult() {
+		String result = "낫싱";
+		if (strike > 0 && ball > 0) {
+			result = strike + " 스트라이크 " + ball + "볼"; 
+		} else if (strike > 0) {
+			result = strike + " 스트라이크";
+		} else if (ball > 0) {
+			result = ball + "볼";
+		}
+		
+		System.out.println(result);
+	}
+	
 
 	
 }
