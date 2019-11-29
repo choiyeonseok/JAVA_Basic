@@ -3,15 +3,21 @@ package baseballgame;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * 게임진행의 역할을 담당하는 클래스
+ * 
+ * @author smr60
+ *
+ */
 public class BaseballGame {
 
-	/** 게임을 위해 필요한 숫자의 자릿 수  */
+	/** 게임을 위해 필요한 숫자의 자릿 수 */
 	private static final int DIGITS = 3;
 
-	/** 정답일 경우, 게임을 종료하기 위한 상수  */
+	/** 정답일 경우, 게임을 종료하기 위한 상수 */
 	private static final int EXIT = 2;
 
-	/** 정답일 경우, 게임을 재시작하기 위한 상수  */
+	/** 정답일 경우, 게임을 재시작하기 위한 상수 */
 	private static final int START = 1;
 
 	/** strike의 갯수 */
@@ -25,8 +31,7 @@ public class BaseballGame {
 	Player player;
 
 	/**
-	 * BaseballGame 클래스의 생성자 입니다.
-	 * 객체 생성시 컴퓨터와 플레이어의 객체도 동시에 생성합니다.
+	 * BaseballGame 클래스의 생성자 입니다. 객체 생성시 컴퓨터와 플레이어의 객체도 동시에 생성합니다.
 	 */
 	BaseballGame() {
 		com = new Computer();
@@ -34,8 +39,7 @@ public class BaseballGame {
 	}
 
 	/**
-	 * 전체 게임 로직을 실행하는 메소드입니다.
-	 * 각 단계에서의 필요한 메소드들을 호출합니다.
+	 * 전체 게임 로직을 실행하는 메소드입니다. 각 단계에서의 필요한 메소드들을 호출합니다.
 	 */
 	void play() {
 		while (true) {
@@ -47,7 +51,6 @@ public class BaseballGame {
 			} while (!checkAnswer());
 			replayOrNot();
 		}
-
 	}
 
 	/**
@@ -59,8 +62,8 @@ public class BaseballGame {
 	}
 
 	/**
-	 * 컴퓨터가 생성한 수와 플레이어가 생성한 수를 비교하여 strike 갯수를 계산합니다.
-	 * 계산이 필요할 때마다 strike를 0으로 초기화한 후 계산값을 새로 저장합니다.
+	 * 컴퓨터가 생성한 수와 플레이어가 생성한 수를 비교하여 strike 갯수를 계산합니다. 계산이 필요할 때마다 strike를 0으로 초기화한
+	 * 후 계산값을 새로 저장합니다.
 	 */
 	private void calcStrike() {
 		strike = 0;
@@ -70,10 +73,10 @@ public class BaseballGame {
 			}
 		}
 	}
-	
+
 	/**
-	 * 컴퓨터가 생성한 수와 플레이어가 생성한 수를 비교하여 ball 갯수를 계산합니다.
-	 * 계산이 필요할 때마다 ball을 0으로 초기화한 후 계산값을 새로 저장합니다.
+	 * 컴퓨터가 생성한 수와 플레이어가 생성한 수를 비교하여 ball 갯수를 계산합니다. 계산이 필요할 때마다 ball을 0으로 초기화한 후
+	 * 계산값을 새로 저장합니다.
 	 */
 	private void calcBall() {
 		ball = 0;
@@ -85,8 +88,8 @@ public class BaseballGame {
 	}
 
 	/**
-	 * ball의 갯수를 계산하기 위한 보조 메소드 입니다.
-	 * 배열에 특정 요소가 포함되어있는지 여부를 확인합니다.
+	 * ball의 갯수를 계산하기 위한 보조 메소드 입니다. 배열에 특정 요소가 포함되어있는지 여부를 확인합니다.
+	 * 
 	 * @param array
 	 * @param value
 	 * @return 포함되어있다면 true를, 그렇지 않다면 false를 반환합니다.
@@ -115,10 +118,9 @@ public class BaseballGame {
 		System.out.println(result);
 	}
 
-	
 	/**
-	 * 정답을 확인하는 메소드 입니다.
-	 * strike 갯수가 3이면 정답으로 간주하고 축하 메시지와 함께 게임의 재시작/종료 여부를 묻습니다. 
+	 * 정답을 확인하는 메소드 입니다. strike 갯수가 3이면 정답으로 간주하고 축하 메시지와 함께 게임의 재시작/종료 여부를 묻습니다.
+	 * 
 	 * @return 정답일 경우 true를 반환, 그렇지 않으면 false를 반환합니다.
 	 */
 	private boolean checkAnswer() {
@@ -131,9 +133,8 @@ public class BaseballGame {
 	}
 
 	/**
-	 * 플레이어에게 1 또는 2를 입력 받고, 2일 경우 프로그램이 종료됩니다.
-	 * 문자를 입력받거나, 1 또는 2이외의 수를 입력받았을 경우는 예외처리가 발생하여 다시 입력을 받습니다.
-	 * 1을 입력했을 경우 게임 로직상 게임이 다시 실행되게 됩니다.
+	 * 플레이어에게 1 또는 2를 입력 받고, 2일 경우 프로그램이 종료됩니다. 문자를 입력받거나, 1 또는 2이외의 수를 입력받았을 경우는
+	 * 예외처리가 발생하여 다시 입력을 받습니다. 1을 입력했을 경우 게임 로직상 게임이 다시 실행되게 됩니다.
 	 */
 	private void replayOrNot() {
 		Scanner input = new Scanner(System.in);
@@ -155,8 +156,8 @@ public class BaseballGame {
 	}
 
 	/**
-	 * 1 또는 2이외의 정수를 입력으로 받았을 때, 임의로 예외처리를 발생시키는 메소드 입니다.
-	 * 예외가 발생하면 입력을 다시 받습니다.
+	 * 1 또는 2이외의 정수를 입력으로 받았을 때, 임의로 예외처리를 발생시키는 메소드 입니다. 예외가 발생하면 입력을 다시 받습니다.
+	 * 
 	 * @param inputValue
 	 */
 	private void createException(int inputValue) {
