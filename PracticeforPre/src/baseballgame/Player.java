@@ -74,7 +74,7 @@ public class Player {
 	 * @return 세 자리수 이면 true를, 그렇지 않으면 false를 반환합니다.
 	 */
 	private boolean isThreeDigits(List<Integer> inputNum) {
-		return inputNum.size() == 3;
+		return inputNum.size() == DIGITS;
 	}
 
 	/**
