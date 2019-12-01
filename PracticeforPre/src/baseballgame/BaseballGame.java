@@ -44,63 +44,29 @@ public class BaseballGame {
 	void play() {
 		while (true) {
 			com.createNumbers();
-			do {
+			while(!checkAnswer()){
 				player.createNumbers();
 				calculateScore();
 				showResult();
-			} while (!checkAnswer());
+			}
 			replayOrNot();
 		}
 	}
 
 	/**
-	 * strike와 ball의 계산을 동시에 해주는 메소드 입니다.
-	 */
-	private void calculateScore() {
-		calcStrike();
-		calcBall();
-	}
-
-	/**
-	 * 컴퓨터가 생성한 수와 플레이어가 생성한 수를 비교하여 strike 갯수를 계산합니다. 계산이 필요할 때마다 strike를 0으로 초기화한
+	 * 컴퓨터가 생성한 수와 플레이어가 생성한 수를 비교하여 strike와 ball의 갯수를 계산합니다. 계산이 필요할 때마다 strike와 ball을 0으로 초기화한
 	 * 후 계산값을 새로 저장합니다.
 	 */
-	private void calcStrike() {
+	private void calculateScore() {
 		strike = 0;
-		for (int i = 0; i < DIGITS; i++) {
-			if (com.comNums[i] == player.playerNums[i]) {
-				strike++;
-			}
-		}
-	}
-
-	/**
-	 * 컴퓨터가 생성한 수와 플레이어가 생성한 수를 비교하여 ball 갯수를 계산합니다. 계산이 필요할 때마다 ball을 0으로 초기화한 후
-	 * 계산값을 새로 저장합니다.
-	 */
-	private void calcBall() {
 		ball = 0;
 		for (int i = 0; i < DIGITS; i++) {
-			if ((com.comNums[i] != player.playerNums[i]) && checkContain(com.comNums, player.playerNums[i])) {
+			if (com.comNums.get(i) == player.playerNums.get(i)) {
+				strike++;
+			} else if(com.comNums.contains(player.playerNums.get(i))){
 				ball++;
 			}
 		}
-	}
-
-	/**
-	 * ball의 갯수를 계산하기 위한 보조 메소드 입니다. 배열에 특정 요소가 포함되어있는지 여부를 확인합니다.
-	 * 
-	 * @param array
-	 * @param value
-	 * @return 포함되어있다면 true를, 그렇지 않다면 false를 반환합니다.
-	 */
-	private boolean checkContain(int[] array, int value) {
-		for (int number : array) {
-			if (number == value) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	/**
@@ -134,7 +100,7 @@ public class BaseballGame {
 
 	/**
 	 * 플레이어에게 1 또는 2를 입력 받고, 2일 경우 프로그램이 종료됩니다. 문자를 입력받거나, 1 또는 2이외의 수를 입력받았을 경우는
-	 * 예외처리가 발생하여 다시 입력을 받습니다. 1을 입력했을 경우 게임 로직상 게임이 다시 실행되게 됩니다.
+	 * 예외처리가 발생하여 다시 입력을 받습니다. 1을 입력했을 경우 strike와 ball이 0으로 초기화되고 게임 로직상 게임이 다시 실행되게 됩니다.
 	 */
 	private void replayOrNot() {
 		Scanner input = new Scanner(System.in);
@@ -153,6 +119,10 @@ public class BaseballGame {
 		if (inputValue == EXIT) {
 			System.exit(0);
 		}
+		
+		strike = 0;
+		ball = 0;
+		
 	}
 
 	/**
