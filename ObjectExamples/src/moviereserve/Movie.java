@@ -1,4 +1,4 @@
-package moviereseve;
+package moviereserve;
 
 import java.time.Duration;
 
@@ -21,6 +21,12 @@ public class Movie {
 	}
 	
 	public Money calculateMovieFee(Screening screening) {
+
+// 안좋은 방식 => 협력방식이 무너짐.
+//		if (discountPolicy == null) {
+//			return fee;
+//		}
+		
         return fee.minus(discountPolicy.calculateDiscountAmount(screening));
     }
 	

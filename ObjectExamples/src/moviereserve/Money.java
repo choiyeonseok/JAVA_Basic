@@ -1,4 +1,4 @@
-package moviereseve;
+package moviereserve;
 
 import java.math.BigDecimal;
 import java.util.Objects;

@@ -1,4 +1,4 @@
-package moviereseve;
+package moviereserve;
 
 import java.time.LocalDateTime;
 
