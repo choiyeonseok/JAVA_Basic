@@ -1,9 +1,9 @@
-package practicerqrq;
+package practice;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Solution {
+public class Lotto_ver1 {
 	
 	static int count = 0;
 	static int bonus;
