@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move package &apos;interfaceex&apos; to &apos;Chapter9/src&apos;&#x0D;&#x0A;- Original project: &apos;First&apos;&#x0D;&#x0A;- Destination element: &apos;Chapter9/src&apos;&#x0D;&#x0A;- Original element: &apos;First/src/interfaceex&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move package" destination="=Chapter9/src" element1="/src&lt;interfaceex" flags="589830" fragments="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.movePackages" stamp="1573540778561" version="1.0"/>
-</session>
