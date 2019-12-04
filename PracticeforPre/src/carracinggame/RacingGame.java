@@ -41,14 +41,20 @@ public class RacingGame {
 	private void showWinners() {
 		int MAX = 0;
 		for (Car car : carlist) {
-			if (MAX < car.getPosition()) {
-				MAX = car.getPosition();
-				winners = car.getName();
-			} else if (MAX == car.getPosition()) {
+			MAX = updateMAX(MAX, car);
+			if (MAX == car.getPosition() && winners != car.getName()) {
 				winners += ", " + car.getName();
 			}
 		}
 		System.out.println(winners + "가 최종 우승했습니다.");
+	}
+	
+	private int updateMAX(int MAX, Car car) {
+		if (MAX < car.getPosition()) {
+			winners = car.getName();
+			return car.getPosition();
+		}
+		return MAX;
 	}
 
 }
