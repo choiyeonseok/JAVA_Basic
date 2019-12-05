@@ -5,12 +5,12 @@ import java.util.List;
 
 public class RacingGame {
 	private int trialTime = 0;
-	private List<Car> carlist;
+	private List<Car> carList;
 	private InputManager inputManager;
 	private String winner = "";
 
 	public RacingGame() {
-		carlist = new ArrayList<>();
+		carList = new ArrayList<>();
 		inputManager = new InputManager();
 	}
 
@@ -24,14 +24,14 @@ public class RacingGame {
 		inputManager.initialize();
 		trialTime = inputManager.getTrialTime();
 		for (String name : inputManager.getCarNames()) {
-			carlist.add(new Car(name));
+			carList.add(new Car(name));
 		}
 	}
 
 	private void raceCars() {
 		System.out.println("실행 결과");
 		for (int i = 0; i < trialTime; i++) {
-			for (Car car : carlist) {
+			for (Car car : carList) {
 				car.goForwardOrNot();
 				car.showPosition();
 			}
@@ -41,7 +41,7 @@ public class RacingGame {
 
 	private void showWinner() {
 		int MAX = 0;
-		for (Car car : carlist) {
+		for (Car car : carList) {
 			MAX = updateMAX(MAX, car);
 			if (MAX == car.getPosition() && winner != car.getName()) {
 				winner += ", " + car.getName();
