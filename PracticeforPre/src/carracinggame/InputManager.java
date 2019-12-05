@@ -1,14 +1,16 @@
 package carracinggame;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class InputManager {
 
 	private int trialTime;
-	private String[] carNames; 
+	private String[] carNames;
 
-	
 	public void initialize() {
 		inputCarNames();
 		inputTrialTime();

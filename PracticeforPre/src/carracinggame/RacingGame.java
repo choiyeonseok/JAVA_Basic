@@ -1,13 +1,14 @@
 package carracinggame;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RacingGame {
 	private int trialTime = 0;
 	private List<Car> carlist;
 	private InputManager inputManager;
-	private String winners = "";
-	
+	private String winner = "";
+
 	public RacingGame() {
 		carlist = new ArrayList<>();
 		inputManager = new InputManager();
@@ -15,10 +16,10 @@ public class RacingGame {
 
 	public void play() {
 		prepareRacing();
-		racing();
-		showWinners();
+		raceCars();
+		showWinner();
 	}
-	
+
 	private void prepareRacing() {
 		inputManager.initialize();
 		trialTime = inputManager.getTrialTime();
@@ -26,8 +27,8 @@ public class RacingGame {
 			carlist.add(new Car(name));
 		}
 	}
-	
-	private void racing() {
+
+	private void raceCars() {
 		System.out.println("실행 결과");
 		for (int i = 0; i < trialTime; i++) {
 			for (Car car : carlist) {
@@ -38,20 +39,20 @@ public class RacingGame {
 		}
 	}
 
-	private void showWinners() {
+	private void showWinner() {
 		int MAX = 0;
 		for (Car car : carlist) {
 			MAX = updateMAX(MAX, car);
-			if (MAX == car.getPosition() && winners != car.getName()) {
-				winners += ", " + car.getName();
+			if (MAX == car.getPosition() && winner != car.getName()) {
+				winner += ", " + car.getName();
 			}
 		}
-		System.out.println(winners + "가 최종 우승했습니다.");
+		System.out.println(winner + "가 최종 우승했습니다.");
 	}
-	
+
 	private int updateMAX(int MAX, Car car) {
 		if (MAX < car.getPosition()) {
-			winners = car.getName();
+			winner = car.getName();
 			return car.getPosition();
 		}
 		return MAX;
