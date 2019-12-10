@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;moviereserve_review.DiscountPolicy.java&apos; to &apos;DefaultDiscountPolicy.java&apos;&#x0D;&#x0A;- Original project: &apos;ObjectExamples&apos;&#x0D;&#x0A;- Original element: &apos;moviereserve_review.DiscountPolicy.java&apos;&#x0D;&#x0A;- Renamed element: &apos;moviereserve_review.DefaultDiscountPolicy.java&apos;" description="Rename compilation unit &apos;DiscountPolicy.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;moviereserve_review{DiscountPolicy.java" name="DefaultDiscountPolicy.java" references="false" stamp="1576001062120" version="1.0"/>
+</session>

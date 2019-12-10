@@ -1,0 +1,5 @@
+package moviereserve_review;
+
+public interface NoneDicountPolicy {
+
+}
