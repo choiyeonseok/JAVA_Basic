@@ -1,0 +1,64 @@
+package moviereserve2;
+
+import java.time.Duration;
+import java.util.List;
+
+import moviereserve.Money;
+
+public class Movie {
+
+	private String title;
+	private Duration runningTime;
+	private Money fee;
+	private List<DiscountCondition> discountConditions;
+	
+	/* 할인 관련 계산을 위해 필요한 데이터 */
+	private MovieType movieType;
+	private Money discountAmount;
+	private double discountPercent;
+	
+	/*
+	 * 할인 가능 여부가 확인될 시, 할인 된 금액을 반환한다.
+	 * MovieType에 따라 할인 양을 계산에 활용한다.
+	 * 
+	 */
+	public Money calculateMovieFee(Screening screening) {
+		if (isDiscountable(screening)) {
+			return fee.minus(calculateDiscountAmount());
+		}
+		return fee;
+	}
+	
+	private boolean isDiscountable(Screening screening) {
+		return discountConditions.stream()
+				.anyMatch(condition -> condition.isSatisfiedBy(screening));
+	}
+
+	private Money calculateDiscountAmount() {
+		switch (movieType) {
+			case AMOUNT_DISCOUNT:
+				return calculateAmountDiscount();
+			case PERCENT_DISCOUNT:
+				return calculatePercentDiscount();
+			case NONE_DISCOUNT :
+				return calculateNoneDiscount();
+		}
+		
+		throw new IllegalStateException();
+			 
+	}
+	
+	private Money calculateAmountDiscount() {
+		return discountAmount;
+	}
+	
+	private Money calculatePercentDiscount() {
+		return fee.times(discountPercent);
+	}
+	
+	private Money calculateNoneDiscount() {
+		return Money.ZERO;
+	}
+	
+	
+}

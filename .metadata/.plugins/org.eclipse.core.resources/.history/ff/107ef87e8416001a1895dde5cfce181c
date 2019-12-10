@@ -1,0 +1,25 @@
+package carracinggame;
+
+import java.util.Scanner;
+
+public class RacingGame {
+
+	private int trialTime = 0;
+	
+	Car car = new Car("yeon");
+	
+	public void play() {
+		Scanner input = new Scanner(System.in);
+		trialTime = input.nextInt();
+		
+		for(int i = 0; i < trialTime; i++) {
+			car.goForwardOrNot();
+			car.showPosition();
+		}
+	
+	}
+	
+	
+	
+	
+}

@@ -1,0 +1,6 @@
+package moviereserve2;
+
+public interface DiscountPolicy {
+
+	Money calculateDiscountAmount();
+}

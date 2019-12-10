@@ -1,0 +1,31 @@
+package ticketselling2;
+
+public class Bag {
+
+	private Long amount;
+	private Ticket ticket;
+	
+	public Bag(Invitation invitation, Long amount) {
+		
+	}
+	
+	public Long hold(Ticket ticket) {
+		if (hasInvitation()) {
+			setTicket(ticket);
+			return 0L;
+		} else {
+			setTicket(ticket);
+			amount -= ticket.getFee();
+			return ticket.getFee();
+		}
+	}
+	
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
+	}
+	
+	public boolean hasInvitation() {
+		return ticket != null;
+	}
+	
+}

@@ -1,0 +1,8 @@
+package moviereserve2;
+
+/* 구현을 공유할 필요는 없다. 인터페이스로 할인조건을 구별하는 `역할`을 하자 */
+public interface DiscountCondition {
+
+	public boolean isSatisfiedBy(Screening screeening);
+	
+}

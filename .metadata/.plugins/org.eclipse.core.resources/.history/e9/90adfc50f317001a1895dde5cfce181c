@@ -1,0 +1,11 @@
+package moviereserve2;
+
+publica abstract class DefaultDiscountPolicy implements DiscountPolicy {
+
+	@Override
+	public Money calculateDiscountAmount() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

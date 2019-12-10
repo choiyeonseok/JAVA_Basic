@@ -1,0 +1,65 @@
+package moviereserve2;
+
+import java.math.BigDecimal;
+import java.util.Objects;
+
+public class Money {
+	
+    public static final Money2 ZERO = Money2.wons(0);
+
+    private final BigDecimal amount;
+
+    public static Money2 wons(long amount) {
+        return new Money2(BigDecimal.valueOf(amount));
+    }
+
+    public static Money2 wons(double amount) {
+        return new Money2(BigDecimal.valueOf(amount));
+    }
+
+    Money(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public Money2 plus(Money2 amount) {
+        return new Money2(this.amount.add(amount.amount));
+    }
+
+    public Money2 minus(Money2 amount) {
+        return new Money2(this.amount.subtract(amount.amount));
+    }
+
+    public Money2 times(double percent) {
+        return new Money2(this.amount.multiply(BigDecimal.valueOf(percent)));
+    }
+
+    public boolean isLessThan(Money2 other) {
+        return amount.compareTo(other.amount) < 0;
+    }
+
+    public boolean isGreaterThanOrEqual(Money2 other) {
+        return amount.compareTo(other.amount) >= 0;
+    }
+
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+
+        if (!(object instanceof Money2)) {
+            return false;
+        }
+
+        Money2 other = (Money2)object;
+        return Objects.equals(amount.doubleValue(), other.amount.doubleValue());
+    }
+
+    public int hashCode() {
+        return Objects.hashCode(amount);
+    }
+
+    public String toString() {
+        return amount.toString() + "¿ø";
+    }
+    
+}

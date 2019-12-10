@@ -1,0 +1,57 @@
+package carracinggame;
+
+import java.util.*;
+
+public class RacingGame {
+
+	private String[] carNames;
+	private int trialTime = 0;
+	private List<Car> carlist = new ArrayList<>(); 
+	private String winners = "";
+	
+	public void play() {
+		initialize();
+		racing();
+		showWinners();
+	}
+	
+	private void initialize() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("경주할 자동차 이름을 입력하세요.(이름은쉼표(,)기준으로구분)");
+		carNames = input.next().split(",");
+		
+		for(String name : carNames) {
+			carlist.add(new Car(name));
+		}
+		
+		System.out.println("시도할 회수는 몇회인가요?");
+		trialTime = input.nextInt();
+	}
+	
+	private void racing() {
+		System.out.println("실행 결과");
+		for(int i = 0; i < trialTime; i++) {
+			for(Car car : carlist) {
+				car.goForwardOrNot();
+				car.showPosition();
+			}
+			System.out.println();
+		}
+	}
+	
+	private void showWinners() {
+		int MAX = 0;
+		for (Car car : carlist) {
+			if (MAX < car.getPosition()) {
+				MAX = car.getPosition();
+				winners = car.getName();
+			}else if(MAX == car.getPosition()) {
+				winners += ", " + car.getName();
+			}
+		}
+		
+		System.out.println(winners + "가 최종 우승했습니다.");
+	}
+	
+	
+}

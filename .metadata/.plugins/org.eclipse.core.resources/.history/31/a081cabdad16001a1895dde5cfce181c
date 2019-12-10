@@ -1,0 +1,57 @@
+package carracinggame;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class RacingGame {
+
+	private int trialTime = 0;
+	private List<Car> carlist = new ArrayList<>(); 
+	private String winners = "";
+	private InputManager inputManager;
+	
+	public RacingGame() {
+		inputManager = new InputManager();
+		inputManager.initialize();
+		trialTime = inputManager.getTrialTime();
+		
+	}
+	
+	public void play() {
+		
+		racing();
+		showWinners();
+	}
+	
+	private void racing() {
+		System.out.println("실행 결과");
+		for(int i = 0; i < trialTime; i++) {
+			for(Car car : carlist) {
+				car.goForwardOrNot();
+				car.showPosition();
+			}
+			System.out.println();
+		}
+	}
+	
+	private void showWinners() {
+		int MAX = 0;
+		for (Car car : carlist) {
+			if (MAX < car.getPosition()) {
+				MAX = car.getPosition();
+				winners = car.getName();
+			}else if(MAX == car.getPosition()) {
+				winners += ", " + car.getName();
+			}
+		}
+		
+		System.out.println(winners + "가 최종 우승했습니다.");
+	}
+	
+	
+}
