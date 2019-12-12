@@ -80,7 +80,7 @@ public class WinningCalculator {
 		if (key == BONUS_PLACE) {
 			return String.format(THIRD_PLACE +"개 일치, 보너스 볼 일치("+winningStatistics.get(key) + ")- " + value);
 		}
-		return restEachScore(key, value);
+		return String.format(key+"개 일치("+winningStatistics.get(key) + ")- " + value);
 	}
 	
 	private String restEachScore(Integer key, Integer value) {

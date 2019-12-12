@@ -6,8 +6,8 @@ import java.util.List;
 public class WinningCalculator {
 
 	private static final int WINNING_BORDER = 3;
-	private static final int FIRST_PLACE = 7;
-	private static final int BONUS_PLACE = 6;
+	private static final int FIRST_PLACE = 6;
+	private static final int BONUS_PLACE = 7;
 	private static final int THIRD_PLACE = 5;
 	private static final int FOURTH_PLACE = 4;
 	private static final int FIFTH_PLACE = 3;
@@ -79,13 +79,6 @@ public class WinningCalculator {
 	private String showEachScore(Integer key, Integer value) {
 		if (key == BONUS_PLACE) {
 			return String.format(THIRD_PLACE +"개 일치, 보너스 볼 일치("+winningStatistics.get(key) + ")- " + value);
-		}
-		return restEachScore(key, value);
-	}
-	
-	private String restEachScore(Integer key, Integer value) {
-		if (key == FIRST_PLACE) {
-			return String.format(BONUS_PLACE + "개 일치("+winningStatistics.get(key) + ")- " + value);
 		}
 		return String.format(key+"개 일치("+winningStatistics.get(key) + ")- " + value);
 	}
