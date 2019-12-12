@@ -5,36 +5,27 @@ import java.util.List;
 import java.util.Scanner;
 
 public class LottoGame {
-	
-	/*
-	 * 로또 관련 상수들
-	 */
 	private static final int LOTTO_SIZE = 6;
 	private static final int LOTTO_MIN = 1;
 	private static final int LOTTO_MAX = 46;
 	
-	/* 로또 당첨 번호 - 보너스 번호의 예외처리 위한 임시리스트 */
 	private List<Integer> winningNumbers;
-	private int bonusNumber;
 	
 	private Player player;
 	private WinningCalculator winningCalculator;
 	
-	/* 메인 로직 실행 메서드 */
 	public void play() {
 		player = new Player();
 		player.purchaseLotto();
 		
-		winningCalculator = new WinningCalculator(winningNumbers, bonusNumber);
-		winningCalculator.calculatePlayerScore(player);
+		winningNumbers = inputWinningNumbers();
+		winningCalculator = new WinningCalculator(winningNumbers, inputBonusNumber());
+		winningCalculator.calculateScore(player);
 	}
 	
-	/*
-	 * 로또 당첨 번호 입력 
-	 */
-	private void inputWinningNumbers() {
+	private List<Integer> inputWinningNumbers() {
 		Scanner input = new Scanner(System.in);
-		winningNumbers = new ArrayList<>();
+		List<Integer> winningNumbers = new ArrayList<>();
 		System.out.println("당첨 번호를 입력해주세요");
 		try {
 			for (int i = 0; i < LOTTO_SIZE; i++) {
@@ -45,16 +36,15 @@ public class LottoGame {
 			}
 		} catch(Exception e) {
 			System.out.println("잘못된 입력입니다.");
-			inputWinningNumbers();
+			return inputWinningNumbers();
 		}
+		return winningNumbers;
 	}
 	
-	/*
-	 * 보너스 당첨 번호 입력
-	 */
-	private void inputBonusNumber() {
+	private int inputBonusNumber() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("보너스 번호를 입력해 주세요");
+		int bonusNumber = 0;
 		try {
 			int inputNumber = input.nextInt();
 			checkLottoRange(inputNumber);
@@ -62,22 +52,17 @@ public class LottoGame {
 			bonusNumber = inputNumber;
 		} catch(Exception e) {
 			System.out.println("잘못된 입력입니다.");
-			inputBonusNumber();
+			return inputBonusNumber();
 		}
+		return bonusNumber;
 	}
 	
-	/*
-	 * 로또 번호가 1~46 숫자 범위 안에 들어오는지 확인
-	 */
 	private void checkLottoRange(int number) throws Exception {
 		if (number < LOTTO_MIN | number > LOTTO_MAX) {
 			throw new Exception();
 		}
 	}
 	
-	/*
-	 * 중복되는 수를 입력했는지 확인
-	 */
 	private void chekcDuplicated(List<Integer> winningNumbers, int number) throws Exception {
 		if (winningNumbers.contains(number)) {
 			throw new Exception();

@@ -59,9 +59,6 @@ public class WinningCalculator {
 		showTotalScoreAndRateOfReturn(player);
 	}
 	
-	/*
-	 * 로또 별 당첨 번호 갯수 계산
-	 */
 	private void calculateEachLotto(Lotto lotto) {
 		int count =  (int)lotto.getNumbers()
 					.stream()
@@ -72,9 +69,6 @@ public class WinningCalculator {
 		}
 	}
 	
-	/*
-	 * 당첨 결과 저장
-	 */
 	private void saveToScoreStatistics(int count, Lotto lotto) {
 		if (count == THIRD_PLACE && lotto.getNumbers().contains(bonusNumber)) {
 			scoreStatistics.put(BONUS_PLACE, scoreStatistics.get(BONUS_PLACE) + 1);
@@ -83,9 +77,6 @@ public class WinningCalculator {
 		scoreStatistics.put(count, scoreStatistics.get(count) + 1);
 	}
 	
-	/*
-	 * 당첨 결과 및 수익률 출력
-	 */
 	private void showTotalScoreAndRateOfReturn(Player player) {
 		for (Integer key : scoreStatistics.keySet()){
 		    System.out.println(showEachScore(key, scoreStatistics.get(key)));
@@ -93,9 +84,6 @@ public class WinningCalculator {
 		System.out.printf("총 수익률은 %.3f%%입니다.", calculateRateOfReturn(player));
 	}
 	
-	/*
-	 * [보너스 번호] + 각 로또 별 당첨번호 출력
-	 */
 	private String showEachScore(Integer key, Integer value) {
 		if (key == BONUS_PLACE) {
 			return String.format(THIRD_PLACE +"개 일치, 보너스 볼 일치("+winningStatistics.get(key) + ")- " + value);
@@ -103,9 +91,6 @@ public class WinningCalculator {
 		return restEachScore(key, value);
 	}
 	
-	/*
-	 * 각 로또 별 당첨 번호 출력
-	 */
 	private String restEachScore(Integer key, Integer value) {
 		if (key == FIRST_PLACE) {
 			return String.format(BONUS_PLACE + "개 일치("+winningStatistics.get(key) + ")- " + value);
@@ -113,9 +98,6 @@ public class WinningCalculator {
 		return String.format(key+"개 일치("+winningStatistics.get(key) + ")- " + value);
 	}
 	
-	/*
-	 * 플레이어의 수익률 계산
-	 */
 	private float calculateRateOfReturn(Player player) {
 		long winningAmount = 0;
 		long purchaseAmount = player.getAmount();

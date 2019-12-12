@@ -82,18 +82,12 @@ public class Player {
 		return new Lotto(numbers);
 	}
 	
-	/*
-	 * 로또 번호 입력 예외처리
-	 */
 	private void checkLottoRange(int number) throws Exception {
 		if (number < LOTTO_MIN | number > LOTTO_MAX) {
 			throw new Exception();
 		}
 	}
 	
-	/*
-	 * 로또 번호 입력 예외처리
-	 */
 	private void chekcDuplicated(List<Integer> numbers, int number) throws Exception {
 		if (numbers.contains(number)) {
 			throw new Exception();

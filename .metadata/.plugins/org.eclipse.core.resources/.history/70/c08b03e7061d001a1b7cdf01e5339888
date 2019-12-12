@@ -5,31 +5,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Player {
-	
-	/* 로또 관련 상수들 */
+
+	private List<Lotto> lottoSet = new ArrayList<>();
+	private long amount;
 	private static final int LOTTO_PRICE = 1000;
 	private static final int LOTTO_SIZE = 6;
 	private static final int LOTTO_MIN = 1;
 	private static final int LOTTO_MAX = 46;
 	
-	/* 로또 구매 금액 (1000원 단위)*/
-	private long amount;
-	
-	/* 구매한 로또 세트들 */
-	private List<Lotto> lottoSet = new ArrayList<>();
-	
-	/*
-	 * 로또 구매 로직
-	 */
 	public void purchaseLotto() {
 		inputPurchaseAmount();
 		makeLottoSet();
 		showLottoSet();
 	}
 	
-	/*
-	 * 로또 구매 금액 입력
-	 */
 	private void inputPurchaseAmount() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("구입 금액을 입력해 주세요");
@@ -43,18 +32,12 @@ public class Player {
 		}
 	}
 	
-	/*
-	 * 구매 금액 1000원 미만시 예외처리
-	 */
 	private void checkPurchaseAmount(long amount) throws Exception {
 		if (amount < 1000) {
 			throw new Exception();
 		}
 	}
 	
-	/*
-	 * 구매 금액만큼 로또 세트 생성
-	 */
 	private void makeLottoSet() {
 		System.out.println("원하는 로또 번호를 입력해주세요.");
 		for (int i = 0; i < (int)amount/LOTTO_PRICE; i++) {
@@ -62,12 +45,10 @@ public class Player {
 		}
 	}
 	
-	/*
-	 * 로또 번호 입력
-	 */
 	private Lotto pickLottoNumbers() {
 		Scanner input = new Scanner(System.in);
 		List<Integer> numbers = new ArrayList<>();
+		
 		try {
 			for (int i = 0; i < LOTTO_SIZE; i++) {
 				int inputNumber = input.nextInt();
@@ -82,27 +63,18 @@ public class Player {
 		return new Lotto(numbers);
 	}
 	
-	/*
-	 * 로또 번호 입력 예외처리
-	 */
 	private void checkLottoRange(int number) throws Exception {
 		if (number < LOTTO_MIN | number > LOTTO_MAX) {
 			throw new Exception();
 		}
 	}
 	
-	/*
-	 * 로또 번호 입력 예외처리
-	 */
 	private void chekcDuplicated(List<Integer> numbers, int number) throws Exception {
 		if (numbers.contains(number)) {
 			throw new Exception();
 		}
 	}
 	
-	/*
-	 * 로또 세트를 출력
-	 */
 	private void showLottoSet() {
 		System.out.println((int)amount/LOTTO_PRICE + "개를 구매했습니다.");
 		for (Lotto lotto : lottoSet) {
