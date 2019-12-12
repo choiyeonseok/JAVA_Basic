@@ -1,0 +1,12 @@
+package phonerate;
+
+public class BasicRatePolicy implements RatePolicy{
+
+	@Override
+	public Money calculateFee(Phone phone) {
+		
+	}
+
+	
+	abstract protected Money calculateCallFee();
+}
