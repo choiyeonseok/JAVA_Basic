@@ -16,5 +16,10 @@ public class Lotto {
 	
 	public void showLottoNumber() {
 		Collections.sort(numbers);
-		System.out.println(Arrays.toString(numbers.toArray()));	}
+		System.out.println(Arrays.toString(numbers.toArray()));	
+	}
+	
+	public List<Integer> getNumbers(){
+		return numbers;
+	}
 }

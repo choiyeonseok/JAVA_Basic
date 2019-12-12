@@ -4,9 +4,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Player player = new Player();
-		player.inputPurchaseAmount();
-		player.makeLottoSet();
+		LottoGame game = new LottoGame();
+		game.play();
+	
 	}
 
 }

@@ -1,0 +1,28 @@
+package lotto;
+
+import java.util.HashMap;
+import java.util.List;
+
+public class WinningCalculator {
+
+	private List<Integer> winningNumbers;
+	private int bonusNumber;
+	private HashMap<Integer, Long> winningStatistics = new HashMap<Integer,Long>() {{
+		put(3, 5000);
+		put(4, 50000);
+		put(5, 1500000);
+		put(6, 200000000);
+	}}; 
+	private HashMap<Integer, Integer> scoreStatistics = new HashMap<>(); 
+
+	public WinningCalculator(List<Integer> winningNumbers, int bonusNumber) {
+		this.winningNumbers = winningNumbers;
+		this.bonusNumber = bonusNumber;
+	}
+	
+	public void calculateScore(Player player) {
+		List<Lotto> lottoSet = player.getLottoSet();
+		
+	}
+	
+}

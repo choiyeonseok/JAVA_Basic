@@ -6,18 +6,41 @@ import java.util.Scanner;
 
 public class LottoGame {
 	private static final int LOTTO_SIZE = 6;
-	private List<Integer> winningNumbers = new ArrayList<>();
-	private int bonusNumber;
 	
-	public void inputWinningNumber() {
+	private Player player;
+	private WinningCalculator winningCalculator;
+	
+	public void play() {
+		player = new Player();
+		player.purchaseLotto();
+		
+		winningCalculator = new WinningCalculator(inputWinningNumbers(), inputBonusNumber());
+		winningCalculator.calculateScore(player);
+		winningCalculator.showScoreMaps();
+		winningCalculator.calculateRateOfReturn(player);
+		
+	}
+	
+	private List<Integer> inputWinningNumbers() {
 		Scanner input = new Scanner(System.in);
+		List<Integer> winningNumbers = new ArrayList<>();
 		System.out.println("당첨 번호를 입력해주세요");
 		for (int i = 0; i < LOTTO_SIZE; i++) {
 			winningNumbers.add(input.nextInt());
 		}
-		System.out.println("보너스 번호를 입력해 주세요");
-		bonusNumber = input.nextInt();
+		return winningNumbers;
 	}
+	
+	private int inputBonusNumber() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("보너스 번호를 입력해 주세요");
+		return input.nextInt();
+	}
+	
+	private void calcuateWinningScore() {
+		winningCalculator.calculateScore(player);
+	}
+	
 	
 	
 }

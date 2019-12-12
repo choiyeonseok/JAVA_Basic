@@ -11,17 +11,23 @@ public class Player {
 	private static final int LOTTO_PRICE = 1000;
 	private static final int LOTTO_SIZE = 6;
 	
-	public void inputPurchaseAmount() {
+	public void purchaseLotto() {
+		inputPurchaseAmount();
+		makeLottoSet();
+		showLottoSet();
+	}
+	
+	private void inputPurchaseAmount() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("구입 금액을 입력해 주세요");
 		amount = input.nextLong();
 	}
 	
-	public void makeLottoSet() {
+	private void makeLottoSet() {
+		System.out.println("원하는 로또 번호를 입력해주세요.");
 		for (int i = 0; i < (int)amount/LOTTO_PRICE; i++) {
 			lottoSet.add(pickLottoNumbers());
 		}
-		showLottoSet();
 	}
 	
 	private Lotto pickLottoNumbers() {
@@ -33,12 +39,19 @@ public class Player {
 		return new Lotto(numbers);
 	}
 	
-	public void showLottoSet() {
+	private void showLottoSet() {
 		System.out.println((int)amount/LOTTO_PRICE + "개를 구매했습니다.");
 		for (Lotto lotto : lottoSet) {
 			lotto.showLottoNumber();
 		}
 	}
 	
+	public List<Lotto> getLottoSet(){
+		return lottoSet;
+	}
+	
+	public long getAmount() {
+		return amount;
+	}
 	
 }

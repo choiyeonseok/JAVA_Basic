@@ -1,0 +1,11 @@
+package lotto;
+
+import java.util.HashMap;
+
+public class RateOfReturn {
+
+	private double rateOfReturn;
+	
+	public RateOfReturn(HashMap<Integer, Integer> scoreStatistics, HashMap<Integer, Long> WinningStatistics)
+	
+}
