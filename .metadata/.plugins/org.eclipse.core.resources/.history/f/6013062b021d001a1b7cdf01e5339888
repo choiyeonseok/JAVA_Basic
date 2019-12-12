@@ -22,7 +22,7 @@ public class Player {
 		System.out.println("구입 금액을 입력해 주세요");
 		
 		try {
-			amount = (long)(input.nextLong())/LOTTO_PRICE * LOTTO_PRICE;
+			amount = input.nextLong();
 			checkPurchaseAmount(amount);
 		} catch(Exception e) {
 			System.out.println("잘못된 입력입니다.");

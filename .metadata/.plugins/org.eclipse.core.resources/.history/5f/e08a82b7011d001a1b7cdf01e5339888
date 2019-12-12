@@ -22,19 +22,13 @@ public class Player {
 		System.out.println("구입 금액을 입력해 주세요");
 		
 		try {
-			amount = (long)(input.nextLong())/LOTTO_PRICE * LOTTO_PRICE;
-			checkPurchaseAmount(amount);
+			amount = input.nextLong();
 		} catch(Exception e) {
 			System.out.println("잘못된 입력입니다.");
 			inputPurchaseAmount();
 		}
 	}
 	
-	private void checkPurchaseAmount(long amount) throws Exception {
-		if (amount < 1000) {
-			throw new Exception();
-		}
-	}
 	
 	private void makeLottoSet() {
 		System.out.println("원하는 로또 번호를 입력해주세요.");

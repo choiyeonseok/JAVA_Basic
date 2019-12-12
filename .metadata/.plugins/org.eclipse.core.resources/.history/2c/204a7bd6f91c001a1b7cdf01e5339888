@@ -55,6 +55,7 @@ public class LottoGame {
 			return inputBonusNumber();
 		}
 		return bonusNumber;
+		
 	}
 	
 	private void checkLottoRange(int number) throws Exception {
