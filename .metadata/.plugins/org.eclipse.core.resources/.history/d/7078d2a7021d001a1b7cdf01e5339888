@@ -10,8 +10,6 @@ public class Player {
 	private long amount;
 	private static final int LOTTO_PRICE = 1000;
 	private static final int LOTTO_SIZE = 6;
-	private static final int LOTTO_MIN = 1;
-	private static final int LOTTO_MAX = 46;
 	
 	public void purchaseLotto() {
 		inputPurchaseAmount();
@@ -48,31 +46,10 @@ public class Player {
 	private Lotto pickLottoNumbers() {
 		Scanner input = new Scanner(System.in);
 		List<Integer> numbers = new ArrayList<>();
-		
-		try {
-			for (int i = 0; i < LOTTO_SIZE; i++) {
-				int inputNumber = input.nextInt();
-				checkLottoRange(inputNumber);
-				chekcDuplicated(numbers, inputNumber);
-				numbers.add(inputNumber);
-			}
-		} catch(Exception e) {
-			System.out.println("잘못된 입력입니다.");
-			return pickLottoNumbers();
+		for (int i = 0; i < LOTTO_SIZE; i++) {
+			numbers.add(input.nextInt());
 		}
 		return new Lotto(numbers);
-	}
-	
-	private void checkLottoRange(int number) throws Exception {
-		if (number < LOTTO_MIN | number > LOTTO_MAX) {
-			throw new Exception();
-		}
-	}
-	
-	private void chekcDuplicated(List<Integer> numbers, int number) throws Exception {
-		if (numbers.contains(number)) {
-			throw new Exception();
-		}
 	}
 	
 	private void showLottoSet() {

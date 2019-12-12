@@ -48,17 +48,11 @@ public class Player {
 	private Lotto pickLottoNumbers() {
 		Scanner input = new Scanner(System.in);
 		List<Integer> numbers = new ArrayList<>();
-		
-		try {
-			for (int i = 0; i < LOTTO_SIZE; i++) {
-				int inputNumber = input.nextInt();
-				checkLottoRange(inputNumber);
-				chekcDuplicated(numbers, inputNumber);
-				numbers.add(inputNumber);
-			}
-		} catch(Exception e) {
-			System.out.println("잘못된 입력입니다.");
-			return pickLottoNumbers();
+		for (int i = 0; i < LOTTO_SIZE; i++) {
+			int inputNumber = input.nextInt();
+			checkLottoRange(inputNumber);
+			chekcDuplicated(numbers, inputNumber);
+			numbers.add(inputNumber);
 		}
 		return new Lotto(numbers);
 	}
@@ -69,8 +63,8 @@ public class Player {
 		}
 	}
 	
-	private void chekcDuplicated(List<Integer> numbers, int number) throws Exception {
-		if (numbers.contains(number)) {
+	private void chekcDuplicated(List<Integer> winningNumbers, int number) throws Exception {
+		if (winningNumbers.contains(number)) {
 			throw new Exception();
 		}
 	}
