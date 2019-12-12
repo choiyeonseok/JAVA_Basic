@@ -1,0 +1,37 @@
+package lotto;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Player {
+
+	private List<Lotto> lottoSet = new ArrayList<>();
+	private Money amount;
+	private static final int LOTTO_PRICE = 1000;
+	private static final int LOTTO_SIZE = 6;
+	
+	public Player(Money amount){
+		this.amount = amount;
+	}
+	
+	public void makeLottoSet() {
+		for (int i = 0; i < (int)amount/LOTTO_PRICE; i++) {
+			lottoSet.add(pickLottoNumbers());
+		}
+	}
+	
+	private Lotto pickLottoNumbers() {
+		Scanner input = new Scanner(System.in);
+		List<Integer> numbers = new ArrayList<>();
+		for (int i = 0; i < LOTTO_SIZE; i++) {
+			numbers.add(input.nextInt());
+		}
+		List<Lotto> lotto = new ArrayList<>(numbers);
+		
+		
+	}
+	
+	
+	
+}
