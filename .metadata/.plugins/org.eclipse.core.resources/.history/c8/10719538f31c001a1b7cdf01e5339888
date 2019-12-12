@@ -8,26 +8,24 @@ public class WinningCalculator {
 	private static final int WINNING_BORDER = 3;
 	private static final int FIRST_PLACE = 6;
 	private static final int SECOND_PLACE = 5;
-	private static final int BONUS_PLACE = 7;
-	private static final int THIRD_PLACE = 4;
-	private static final int FORTH_PLACE = 3;
+	private static final int BONUS_PLACE = 0;
 	private static final int PERCENTAGE = 100;
 	
 	private List<Integer> winningNumbers;
 	private int bonusNumber;
 	private HashMap<Integer, Integer> scoreStatistics = new HashMap<Integer, Integer>() {{
-		put(FORTH_PLACE, 0);
-		put(THIRD_PLACE, 0);
-		put(SECOND_PLACE, 0);
-		put(BONUS_PLACE, 0);
-		put(FIRST_PLACE, 0);
+		put(3, 0);
+		put(4, 0);
+		put(5, 0);
+		put(0, 0);
+		put(6, 0);
 	}};  
 	private HashMap<Integer, Long> winningStatistics = new HashMap<Integer,Long>() {{
-		put(FORTH_PLACE, 5000L);
-		put(THIRD_PLACE, 50000L);
-		put(SECOND_PLACE, 1500000L);
-		put(BONUS_PLACE, 30000000L);
-		put(FIRST_PLACE, 200000000L);
+		put(3, 5000L);
+		put(4, 50000L);
+		put(5, 1500000L);
+		put(0, 30000000L);
+		put(6, 200000000L);
 	}}; 
 	
 	public WinningCalculator(List<Integer> winningNumbers, int bonusNumber) {
@@ -38,9 +36,8 @@ public class WinningCalculator {
 	public void calculateScore(Player player) {
 		List<Lotto> lottoSet = player.getLottoSet();
 		for (Lotto lotto : lottoSet) {
-			calculateEachLotto(lotto);
+				calculateEachLotto(lotto);
 		}
-		showTotalScoreAndRateOfReturn(player);
 	}
 	
 	private void calculateEachLotto(Lotto lotto) {
@@ -48,41 +45,40 @@ public class WinningCalculator {
 					.stream()
 					.filter(i -> winningNumbers.contains(i))
 					.count();
+		
 		if (count >= WINNING_BORDER) {
 			saveToScoreStatistics(count, lotto);
 		}
 	}
 	
 	private void saveToScoreStatistics(int count, Lotto lotto) {
-		if (count == SECOND_PLACE && lotto.getNumbers().contains(bonusNumber)) {
-			scoreStatistics.put(BONUS_PLACE, scoreStatistics.get(BONUS_PLACE) + 1);
-			return;
+		if (count == FIRST_PLACE && lotto.getNumbers().contains(bonusNumber)) {
+			scoreStatistics.put(0, scoreStatistics.get(0) + 1);
 		}
 		scoreStatistics.put(count, scoreStatistics.get(count) + 1);
 	}
 	
-	private void showTotalScoreAndRateOfReturn(Player player) {
+	public void showScoreMaps() {
 		for (Integer key : scoreStatistics.keySet()){
-		    System.out.println(showEachScore(key, scoreStatistics.get(key)));
+		    showEachScore(key, scoreStatistics.get(key));
 		}
-		System.out.printf("총 수익률은 %.3f%%입니다.", calculateRateOfReturn(player));
 	}
 	
-	private String showEachScore(Integer key, Integer value) {
+	public void showEachScore(Integer key, Integer value) {
 		if (key == BONUS_PLACE) {
-			return String.format(SECOND_PLACE +"개 일치, 보너스 볼 일치("+winningStatistics.get(key) + ")- " + value);
+			System.out.println(String.format(SECOND_PLACE +"개 일치, 보너스 볼 일치("+winningStatistics.get(key) + ")- " + value));
 		}
-		return String.format(key+"개 일치("+winningStatistics.get(key) + ")- " + value);
+		System.out.println(String.format(key+"개 일치("+winningStatistics.get(key) + ")- " + value));
 	}
 	
-	private float calculateRateOfReturn(Player player) {
+	public void calculateRateOfReturn(Player player) {
 		long winningAmount = 0;
 		long purchaseAmount = player.getAmount();
 		
 		for (Integer key : scoreStatistics.keySet()){
 		    winningAmount += winningStatistics.get(key) * scoreStatistics.get(key);
 		}
-		return (float)winningAmount / purchaseAmount * PERCENTAGE;
+		System.out.printf("총 수익률은 %.3f%%입니다.", (float)winningAmount / purchaseAmount * PERCENTAGE);
 	}
 	
 }

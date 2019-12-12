@@ -48,6 +48,7 @@ public class WinningCalculator {
 					.stream()
 					.filter(i -> winningNumbers.contains(i))
 					.count();
+		
 		if (count >= WINNING_BORDER) {
 			saveToScoreStatistics(count, lotto);
 		}

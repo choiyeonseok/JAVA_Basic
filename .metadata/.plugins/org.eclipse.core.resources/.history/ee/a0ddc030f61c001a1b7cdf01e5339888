@@ -8,26 +8,24 @@ public class WinningCalculator {
 	private static final int WINNING_BORDER = 3;
 	private static final int FIRST_PLACE = 6;
 	private static final int SECOND_PLACE = 5;
-	private static final int BONUS_PLACE = 7;
-	private static final int THIRD_PLACE = 4;
-	private static final int FORTH_PLACE = 3;
+	private static final int BONUS_PLACE = 0;
 	private static final int PERCENTAGE = 100;
 	
 	private List<Integer> winningNumbers;
 	private int bonusNumber;
 	private HashMap<Integer, Integer> scoreStatistics = new HashMap<Integer, Integer>() {{
-		put(FORTH_PLACE, 0);
-		put(THIRD_PLACE, 0);
-		put(SECOND_PLACE, 0);
-		put(BONUS_PLACE, 0);
-		put(FIRST_PLACE, 0);
+		put(3, 0);
+		put(4, 0);
+		put(5, 0);
+		put(0, 0);
+		put(6, 0);
 	}};  
 	private HashMap<Integer, Long> winningStatistics = new HashMap<Integer,Long>() {{
-		put(FORTH_PLACE, 5000L);
-		put(THIRD_PLACE, 50000L);
-		put(SECOND_PLACE, 1500000L);
-		put(BONUS_PLACE, 30000000L);
-		put(FIRST_PLACE, 200000000L);
+		put(3, 5000L);
+		put(4, 50000L);
+		put(5, 1500000L);
+		put(0, 30000000L);
+		put(6, 200000000L);
 	}}; 
 	
 	public WinningCalculator(List<Integer> winningNumbers, int bonusNumber) {
@@ -40,6 +38,7 @@ public class WinningCalculator {
 		for (Lotto lotto : lottoSet) {
 			calculateEachLotto(lotto);
 		}
+		
 		showTotalScoreAndRateOfReturn(player);
 	}
 	
@@ -48,6 +47,7 @@ public class WinningCalculator {
 					.stream()
 					.filter(i -> winningNumbers.contains(i))
 					.count();
+		
 		if (count >= WINNING_BORDER) {
 			saveToScoreStatistics(count, lotto);
 		}
