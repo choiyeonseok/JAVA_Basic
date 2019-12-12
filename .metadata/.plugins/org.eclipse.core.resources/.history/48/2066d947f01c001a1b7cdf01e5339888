@@ -59,14 +59,5 @@ public class WinningCalculator {
 		}
 	}
 	
-	public void calculateRateOfReturn(Player player) {
-		long winningAmount = 0;
-		long purchaseAmount = player.getAmount();
-		
-		for (Integer key : scoreStatistics.keySet()){
-		    winningAmount += winningStatistics.get(key) * scoreStatistics.get(key);
-		}
-		System.out.printf("ÃÑ ¼öÀÍ·üÀº %.3f%%ÀÔ´Ï´Ù.", (float)winningAmount / purchaseAmount * PERCENTAGE);
-	}
-	
+
 }
