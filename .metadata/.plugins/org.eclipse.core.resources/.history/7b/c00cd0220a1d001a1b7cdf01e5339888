@@ -24,8 +24,7 @@ public class LottoGame {
 	public void play() {
 		player = new Player();
 		player.purchaseLotto();
-		inputWinningNumbers();
-		inputBonusNumber();
+		
 		winningCalculator = new WinningCalculator(winningNumbers, bonusNumber);
 		winningCalculator.calculatePlayerScore(player);
 	}
