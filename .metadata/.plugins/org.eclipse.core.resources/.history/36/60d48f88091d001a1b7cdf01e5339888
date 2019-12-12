@@ -29,7 +29,7 @@ public class WinningCalculator {
 	}};  
 	
 	/* 로또 등수 별 상금 통계 */
-	private HashMap<Integer, Long> rewardInformation = new HashMap<Integer,Long>() {{
+	private HashMap<Integer, Long> winningStatistics = new HashMap<Integer,Long>() {{
 		put(FIFTH_PLACE, FIFTH_PLACE_REWARD);
 		put(FOURTH_PLACE, FOURTH_PLACE_REWARD);
 		put(THIRD_PLACE, THIRD_PLACE_REWARD);
@@ -98,7 +98,7 @@ public class WinningCalculator {
 	 */
 	private String showEachScore(Integer key, Integer value) {
 		if (key == BONUS_PLACE) {
-			return String.format(THIRD_PLACE +"개 일치, 보너스 볼 일치("+rewardInformation.get(key) + ")- " + value);
+			return String.format(THIRD_PLACE +"개 일치, 보너스 볼 일치("+winningStatistics.get(key) + ")- " + value);
 		}
 		return restEachScore(key, value);
 	}
@@ -108,9 +108,9 @@ public class WinningCalculator {
 	 */
 	private String restEachScore(Integer key, Integer value) {
 		if (key == FIRST_PLACE) {
-			return String.format(BONUS_PLACE + "개 일치("+rewardInformation.get(key) + ")- " + value);
+			return String.format(BONUS_PLACE + "개 일치("+winningStatistics.get(key) + ")- " + value);
 		}
-		return String.format(key+"개 일치("+rewardInformation.get(key) + ")- " + value);
+		return String.format(key+"개 일치("+winningStatistics.get(key) + ")- " + value);
 	}
 	
 	/*
@@ -121,7 +121,7 @@ public class WinningCalculator {
 		long purchaseAmount = player.getAmount();
 		
 		for (Integer key : scoreStatistics.keySet()){
-		    winningAmount += rewardInformation.get(key) * scoreStatistics.get(key);
+		    winningAmount += winningStatistics.get(key) * scoreStatistics.get(key);
 		}
 		return (float)winningAmount / purchaseAmount * PERCENTAGE;
 	}
