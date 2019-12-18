@@ -10,10 +10,10 @@ class LadderTest {
         // 1 1 0 0
         // 0 1 1 0
         // 0 0 1 1
-        Ladder ladder = new Ladder(3, 4);
-        ladder.drawLine(0, 0);
-        ladder.drawLine(1, 1);
-        ladder.drawLine(2, 2);
+        Ladder ladder = new Ladder(new NaturalNumber(3), new NaturalNumber(4));
+        ladder.drawLine(new NaturalNumber(1), new NaturalNumber(1));
+        ladder.drawLine(new NaturalNumber(2), new NaturalNumber(2));
+        ladder.drawLine(new NaturalNumber(3), new NaturalNumber(3));
 
         assertEquals(3, ladder.run(0));
         assertEquals(0, ladder.run(1));

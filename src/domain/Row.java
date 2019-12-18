@@ -8,7 +8,7 @@ class Row {
 
         private int no;
 
-        private Direction(int no) {
+        Direction(int no) {
             this.no = no;
         }
 
@@ -20,27 +20,21 @@ class Row {
 
     private int[] persons;
 
-    Row(int noOfPersons){
-        if (noOfPersons < 1) {
-            throw new IllegalArgumentException(String.format("사람 수는 한 명 이상이어야 합니다. 현재 값은 : %d,", noOfPersons));
-        }
-        persons = new int[noOfPersons];
+    Row(NaturalNumber noOfPersons){
+        persons = new int[noOfPersons.getNumber()];
     }
 
-    void drawLine(int startPosition) {
-        if (startPosition < 0) {
-            throw new IllegalArgumentException(String.format("시작 점은 0이상이어야 합니다. 현재 값은 : %d", startPosition));
+    void drawLine(NaturalNumber startPosition) {
+        int startIndex = startPosition.toArrayIndex();
+        if (startIndex >= persons.length - 1) {
+            throw new IllegalArgumentException(String.format("시작 점은 %d미만이어야 합니다. 현재 값은 : %d", persons.length - 1, startIndex));
         }
 
-        if (startPosition >= persons.length - 1) {
-            throw new IllegalArgumentException(String.format("시작 점은 %d미만이어야 합니다. 현재 값은 : %d", persons.length - 1, startPosition));
-        }
-
-        if (persons[startPosition] == -1) {
+        if (persons[startIndex] == -1) {
             throw new IllegalArgumentException("선을 그을 수 없는 위치입니다.");
         }
-        persons[startPosition] = Direction.RIGHT.getNo();
-        persons[startPosition + Direction.RIGHT.getNo()] = Direction.LEFT.getNo();
+        persons[startIndex] = Direction.RIGHT.getNo();
+        persons[startIndex + Direction.RIGHT.getNo()] = Direction.LEFT.getNo();
     }
 
     int move(int nthOfPerson) {

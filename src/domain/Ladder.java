@@ -3,24 +3,19 @@ package domain;
 class Ladder {
     private Row[] rows;
 
-    Ladder(int height, int noOfPerson) {
-        if (height < 1) {
-            throw new IllegalArgumentException(String.format("사다리 높이는 1 이상이어야 합니다. 현재 값 : %d ", height));
-        }
-        rows = new Row[height];
-        for (int i = 0; i < height; i++) {
+    Ladder(NaturalNumber height, NaturalNumber noOfPerson) {
+        rows = new Row[height.getNumber()];
+        for (int i = 0; i < height.getNumber(); i++) {
             rows[i] = new Row(noOfPerson);
         }
     }
 
-    void drawLine(int height, int startPosition) {
-        if (height < 0) {
-            throw new IllegalArgumentException(String.format("사다리 높이는 1 이상이어야 합니다. 현재 값 : %d ", height));
+    void drawLine(NaturalNumber height, NaturalNumber startPosition) {
+        int startIndex = height.toArrayIndex();
+        if (startIndex > rows.length - 1) {
+            throw new IllegalArgumentException(String.format("사다리 최대 높이를 넘어 섰습니다. 현재 값 : %d ", startIndex));
         }
-        if (height > rows.length - 1) {
-            throw new IllegalArgumentException(String.format("사다리 최대 높이를 넘어 섰습니다. 현재 값 : %d ", height));
-        }
-        rows[height].drawLine(startPosition);
+        rows[startIndex].drawLine(startPosition);
     }
 
     int run(int nthOfPerson) {
