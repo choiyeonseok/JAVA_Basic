@@ -13,15 +13,24 @@ public class Row {
     }
 
     int moveRow(int nthOfPerson) {
-        if (persons[nthOfPerson] == 0) {  // 좌,우 이동 없이 바로 내려온다.
+        if (isNoLine(nthOfPerson)) {
             return nthOfPerson;
         }
-        if (nthOfPerson - 1 >= 0) {   // 0 보다 큰 인덱스까지, 1 감소한 인덱스를 반환
-            int leftValue = persons[nthOfPerson - 1];
-            if (leftValue == 1) {
-                return nthOfPerson - 1;
-            }
+        if (isNotLeftEnd(nthOfPerson) && canLeft(nthOfPerson)) {
+            return nthOfPerson - 1;
         }
         return nthOfPerson + 1;
+    }
+
+    private boolean canLeft(int nthOfPerson) {
+        return persons[nthOfPerson - 1] == 1;
+    }
+
+    private boolean isNotLeftEnd(int nthOfPerson) {
+        return nthOfPerson - 1 >= 0;
+    }
+
+    private boolean isNoLine(int nthOfPerson) {
+        return persons[nthOfPerson] == 0;
     }
 }
