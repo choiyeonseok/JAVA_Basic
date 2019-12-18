@@ -1,10 +1,22 @@
 package domain;
 
 public class Row {
-    private static final int RIGHT_DIRECTION = 1;
-    private static final int LEFT_DIRECTION = -1;
-    private static final int CENTER_DIRECTION = 0;
+    enum Direction {
+        LEFT(-1),
+        RIGHT(1),
+        CENTER(0);
 
+        private int no;
+
+        Direction(int no) {
+            this.no = no;
+        }
+
+        int getNo(){
+            return no;
+        }
+
+    }
 
     int[] persons;
 
@@ -13,8 +25,8 @@ public class Row {
     }
 
     void drawLine(int startPosition) {
-        persons[startPosition] = RIGHT_DIRECTION;
-        persons[startPosition + RIGHT_DIRECTION] = LEFT_DIRECTION;
+        persons[startPosition] = Direction.RIGHT.getNo();
+        persons[startPosition + Direction.RIGHT.getNo()] = Direction.LEFT.getNo();
     }
 
     int move(int nthOfPerson) {
@@ -23,17 +35,17 @@ public class Row {
         }
 
         if (isRightDirection(nthOfPerson)) {
-            return nthOfPerson + RIGHT_DIRECTION;
+            return nthOfPerson + Direction.RIGHT.getNo();
         }
 
-        return nthOfPerson + LEFT_DIRECTION;
+        return nthOfPerson + Direction.LEFT.getNo();
     }
 
     private boolean isRightDirection(int nthOfPerson) {
-        return persons[nthOfPerson] == RIGHT_DIRECTION;
+        return persons[nthOfPerson] == Direction.RIGHT.getNo();
     }
 
     private boolean isNoLine(int nthOfPerson) {
-        return persons[nthOfPerson] == CENTER_DIRECTION;
+        return persons[nthOfPerson] == Direction.CENTER.getNo();
     }
 }
