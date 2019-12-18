@@ -17,11 +17,15 @@ public class Row {
             return nthOfPerson;
         }
 
-        if (persons[nthOfPerson] == 1) {
+        if (isRightDirection(nthOfPerson)) {
             return nthOfPerson + 1;
         }
 
         return nthOfPerson - 1;
+    }
+
+    private boolean isRightDirection(int nthOfPerson) {
+        return persons[nthOfPerson] == 1;
     }
 
     private boolean isNoLine(int nthOfPerson) {
