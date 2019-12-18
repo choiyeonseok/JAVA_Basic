@@ -1,7 +1,7 @@
 package domain;
 
-public class Ladder {
-    Row[] rows;
+class Ladder {
+    private Row[] rows;
 
     Ladder(int countOfRows, int noOfPerson) {
         rows = new Row[countOfRows];
@@ -10,11 +10,11 @@ public class Ladder {
         }
     }
 
-    public void drawLine(int noOfRow, int startPosition) {
+    void drawLine(int noOfRow, int startPosition) {
         rows[noOfRow].drawLine(startPosition);
     }
 
-    public int run(int nthOfPerson) {
+    int run(int nthOfPerson) {
         for (int i = 0; i < rows.length; i++) {
             Row row = rows[i];
             nthOfPerson = row.move(nthOfPerson);

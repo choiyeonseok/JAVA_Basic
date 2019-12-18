@@ -1,14 +1,14 @@
 package domain;
 
-public class Row {
-    enum Direction {
+class Row {
+    private enum Direction {
         LEFT(-1),
         RIGHT(1),
         CENTER(0);
 
         private int no;
 
-        Direction(int no) {
+        private Direction(int no) {
             this.no = no;
         }
 
@@ -18,7 +18,7 @@ public class Row {
 
     }
 
-    int[] persons;
+    private int[] persons;
 
     Row(int noOfPersons){
         if (noOfPersons < 1) {
