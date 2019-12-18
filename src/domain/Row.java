@@ -1,6 +1,11 @@
 package domain;
 
 public class Row {
+    private static final int RIGHT_DIRECTION = 1;
+    private static final int LEFT_DIRECTION = -1;
+    private static final int CENTER_DIRECTION = 0;
+
+
     int[] persons;
 
     Row(int noOfPersons){
@@ -8,8 +13,8 @@ public class Row {
     }
 
     void drawLine(int startPosition) {
-        persons[startPosition] = 1;
-        persons[startPosition + 1] = -1;
+        persons[startPosition] = RIGHT_DIRECTION;
+        persons[startPosition + RIGHT_DIRECTION] = LEFT_DIRECTION;
     }
 
     int move(int nthOfPerson) {
@@ -18,17 +23,17 @@ public class Row {
         }
 
         if (isRightDirection(nthOfPerson)) {
-            return nthOfPerson + 1;
+            return nthOfPerson + RIGHT_DIRECTION;
         }
 
-        return nthOfPerson - 1;
+        return nthOfPerson + LEFT_DIRECTION;
     }
 
     private boolean isRightDirection(int nthOfPerson) {
-        return persons[nthOfPerson] == 1;
+        return persons[nthOfPerson] == RIGHT_DIRECTION;
     }
 
     private boolean isNoLine(int nthOfPerson) {
-        return persons[nthOfPerson] == 0;
+        return persons[nthOfPerson] == CENTER_DIRECTION;
     }
 }
