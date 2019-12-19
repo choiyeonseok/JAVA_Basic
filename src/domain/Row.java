@@ -37,12 +37,11 @@ class Row {
         return nodes;
     }
 
-    public void generateRow(StringBuilder sb, int currentHeight, NaturalNumber height, NaturalNumber nthOfPerson) {
+    public void generateRow(StringBuilder sb, int currentHeight, Position position) {
         for (int j = 0; j < nodes.length; j++) {
             Node node = nodes[j];
             node.appendSymbol(sb);
-            if (height.equals(NaturalNumber.createFromArrayIndex(currentHeight)) &&
-                    nthOfPerson.equals(NaturalNumber.createFromArrayIndex(j))) {
+            if (position.equals(Position.createFromArrayIndex(currentHeight, j))) {
                 sb.append("*");
             }
             sb.append(" ");
