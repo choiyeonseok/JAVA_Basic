@@ -14,14 +14,19 @@ class Row {
 
     void drawLine(NaturalNumber startPosition) {
         int startIndex = startPosition.toArrayIndex();
-        if (startIndex >= nodes.length - 1) {
-            throw new IllegalArgumentException(String.format("시작 점은 %d미만이어야 합니다. 현재 값은 : %d", nodes.length - 1, startIndex));
+        if (isOverNoOfPersons(startIndex)) {
+            throw new IllegalArgumentException(String.format("시작 점은 %d 미만이어야 합니다. 현재 값은 : %d", nodes.length - 1, startIndex));
         }
-        if (nodes[startIndex].equals(Node.createLeftNode())){
+        if (nodes[startIndex].isLeftDirection()){
             throw new IllegalArgumentException("선을 그을 수 없는 위치 입니다. ");
         }
         nodes[startIndex].changeRight();
         nodes[startIndex + 1].changeLeft();
+    }
+
+    private boolean isOverNoOfPersons(int startIndex) {
+        // 사람 수 5일 경우 선 시작 위치는 4 이상이 될 수 없다. 즉, 3까지 허용
+        return startIndex >= nodes.length - 1;
     }
 
     Marker move(Marker marker) {

@@ -24,11 +24,19 @@ public class Node {
         this.direction = Direction.LEFT;
     }
 
+    public boolean isRightDirection() {
+        return this.direction == Direction.RIGHT;
+    }
+
+    public boolean isLeftDirection() {
+        return this.direction == Direction.LEFT;
+    }
+
     Marker move(Marker marker) {
-        if (this.direction == Direction.RIGHT) {
+        if (isRightDirection()) {
             return marker.moveRight();
         }
-        if (this.direction == Direction.LEFT) {
+        if (isLeftDirection()) {
             return marker.moveLeft();
         }
         return marker;

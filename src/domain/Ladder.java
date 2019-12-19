@@ -14,7 +14,7 @@ class Ladder {
 
     void drawLine(NaturalNumber height, NaturalNumber startPosition) {
         if (isOverHeight(height)) {
-            throw new IllegalArgumentException(String.format("사다리 최대 높이를 넘어 섰습니다. 현재 값 : %d ", startIndex));
+            throw new IllegalArgumentException(String.format("사다리 최대 높이를 넘어 섰습니다. 현재 값 : %d ", height));
         }
         rows[height.toArrayIndex()].drawLine(startPosition);
     }
