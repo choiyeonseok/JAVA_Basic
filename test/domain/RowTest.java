@@ -69,9 +69,4 @@ class RowTest {
         assertEquals(3, target.getNumber());
     }
 
-    @Test
-    public void generate() {
-
-    }
-
 }

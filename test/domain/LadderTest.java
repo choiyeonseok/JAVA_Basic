@@ -11,7 +11,7 @@ class LadderTest {
         // 1 1 0 0
         // 0 1 1 0
         // 0 0 1 1
-        Ladder ladder = new Ladder(new NaturalNumber(3), new NaturalNumber(4));
+        LadderGame ladder = new LadderGame(new NaturalNumber(3), new NaturalNumber(4));
         ladder.drawLine(new NaturalNumber(1), new NaturalNumber(1));
         ladder.drawLine(new NaturalNumber(2), new NaturalNumber(2));
         ladder.drawLine(new NaturalNumber(3), new NaturalNumber(3));
@@ -28,7 +28,7 @@ class LadderTest {
         for (int i = 0; i < rows.length; i++) {
             rows[i] = new Row(new NaturalNumber(3));
         }
-        String result = Ladder.generate(rows, Position.create(1, 1));
+        String result = LadderRunner.generate(rows, Position.create(1, 1));
         assertEquals("0* 0 0 \n0 0 0 \n0 0 0 \n", result);
     }
 
@@ -39,7 +39,7 @@ class LadderTest {
             rows[i] = new Row(new NaturalNumber(3));
         }
         rows[0].drawLine(new NaturalNumber(1));
-        String result = Ladder.generate(rows, Position.create(1, 1));
+        String result = LadderRunner.generate(rows, Position.create(1, 1));
         assertEquals("1* -1 0 \n0 0 0 \n0 0 0 \n", result);
     }
 

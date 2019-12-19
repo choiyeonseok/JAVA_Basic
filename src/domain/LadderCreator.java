@@ -2,10 +2,10 @@ package domain;
 
 import core.NaturalNumber;
 
-class Ladder {
+public class LadderCreator {
     private Row[] rows;
 
-    Ladder(NaturalNumber height, NaturalNumber noOfPerson) {
+    LadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
         rows = new Row[height.getNumber()];
         for (int i = 0; i < height.getNumber(); i++) {
             rows[i] = new Row(noOfPerson);
@@ -32,13 +32,7 @@ class Ladder {
         return height.toArrayIndex() > rows.length - 1;
     }
 
-    Marker run(Marker nthOfPerson) {
-        int target = nthOfPerson.getNumber();
-        for (int i = 0; i < rows.length; i++) {
-            Row row = rows[i];
-            nthOfPerson = row.move(nthOfPerson);
-            System.out.println(generate(rows, Position.createFromArrayIndex(i, nthOfPerson.toArrayIndex())));
-        }
-        return nthOfPerson;
+    Row[] getLadder() {
+        return this.rows;
     }
 }
