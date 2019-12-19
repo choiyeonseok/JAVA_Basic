@@ -32,4 +32,22 @@ class Row {
     Marker move(Marker marker) {
         return nodes[marker.toArrayIndex()].move(marker);
     }
+
+    public Node[] getNodes() {
+        return nodes;
+    }
+
+    public void generateRow(StringBuilder sb, int currentHeight, NaturalNumber height, NaturalNumber nthOfPerson) {
+        for (int j = 0; j < nodes.length; j++) {
+            Node node = nodes[j];
+            node.appendSymbol(sb);
+            if (height.equals(NaturalNumber.createFromArrayIndex(currentHeight)) &&
+                    nthOfPerson.equals(NaturalNumber.createFromArrayIndex(j))) {
+                sb.append("*");
+            }
+            sb.append(" ");
+        }
+        sb.append("\n");
+    }
+
 }

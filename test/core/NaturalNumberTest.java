@@ -1,6 +1,5 @@
 package core;
 
-import core.NaturalNumber;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,6 +27,10 @@ class NaturalNumberTest {
         assertEquals(2, number.toArrayIndex());
     }
 
-
+    @Test
+    public void createFromArrayIndex() {
+        NaturalNumber actual = NaturalNumber.createFromArrayIndex(1);
+        assertEquals(new NaturalNumber(2), actual);
+    }
 
 }
