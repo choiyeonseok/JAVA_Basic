@@ -18,7 +18,8 @@ class Ladder {
         rows[startIndex].drawLine(startPosition);
     }
 
-    int run(int nthOfPerson) {
+    Marker run(Marker nthOfPerson) {
+        int target = nthOfPerson.getNumber();
         for (int i = 0; i < rows.length; i++) {
             Row row = rows[i];
             nthOfPerson = row.move(nthOfPerson);

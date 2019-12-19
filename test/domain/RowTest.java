@@ -45,37 +45,27 @@ class RowTest {
     }
     @Test
     public void moveWhenNoLine() throws Exception {
-        int target = row.move(0);
-        assertEquals(0, target);
+        NaturalNumber target = row.move(new Marker(1));
+        assertEquals(1, target.getNumber());
 
-        target = row.move(2);
-        assertEquals(2, target);
+        target = row.move(new Marker(2));
+        assertEquals(2, target.getNumber());
     }
 
     @Test
     public void moveWhenLineLeft() throws Exception {
         // 0 1 1
         row.drawLine(new NaturalNumber(2));
-        int target = row.move(2);
-        assertEquals(1, target);
-
-        // 1 1 0
-        row.drawLine(new NaturalNumber(1));
-        target = row.move(1);
-        assertEquals(0, target);
+        NaturalNumber target = row.move(new Marker(3));
+        assertEquals(2, target.getNumber());
     }
 
     @Test
     public void moveWhenLineRight() throws Exception {
         // 0 1 1
         row.drawLine(new NaturalNumber(2));
-        int target = row.move(1);
-        assertEquals(2, target);
-
-        // 1 1 0
-        row.drawLine(new NaturalNumber(1));
-        target = row.move(0);
-        assertEquals(1, target);
+        NaturalNumber target = row.move(new Marker(2));
+        assertEquals(3, target.getNumber());
     }
 
 }

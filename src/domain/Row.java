@@ -37,16 +37,16 @@ class Row {
         persons[startIndex + Direction.RIGHT.getNo()] = Direction.LEFT.getNo();
     }
 
-    int move(int nthOfPerson) {
-        if (isNoLine(nthOfPerson)) {
-            return nthOfPerson;
+    Marker move(Marker startMarker) {
+        if (isNoLine(startMarker.toArrayIndex())) {
+            return startMarker;
         }
 
-        if (isRightDirection(nthOfPerson)) {
-            return nthOfPerson + Direction.RIGHT.getNo();
+        if (isRightDirection(startMarker.toArrayIndex())) {
+            return startMarker.moveRight();
         }
 
-        return nthOfPerson + Direction.LEFT.getNo();
+        return startMarker.moveLeft();
     }
 
     private boolean isRightDirection(int nthOfPerson) {

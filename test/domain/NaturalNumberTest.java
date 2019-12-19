@@ -27,4 +27,6 @@ class NaturalNumberTest {
         assertEquals(2, number.toArrayIndex());
     }
 
+
+
 }
