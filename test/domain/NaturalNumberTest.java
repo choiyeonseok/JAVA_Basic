@@ -12,7 +12,7 @@ class NaturalNumberTest {
     }
 
     @Test
-    public void createWhenUnderZero() throws Exception {
+    public void createWhenUnderZero() {
         try {
             new NaturalNumber(0);
             fail("IllegalArgumentException 이 발생해야 합니다.");

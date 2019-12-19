@@ -9,12 +9,12 @@ class RowTest {
     private Row row;
 
     @BeforeEach
-    protected void setUp() throws Exception {
+    protected void setUp() {
         row = new Row(new NaturalNumber(3));
     }
 
     @Test
-    public void startPositionWhenMinus() throws Exception {
+    public void startPositionWhenMinus() {
         try {
             row.drawLine(new NaturalNumber(0));
             fail("IllegalArgumentException 에러가 발생해야 한다.");
@@ -24,7 +24,7 @@ class RowTest {
     }
 
     @Test
-    public void startPositionWhenOverNoOfPersons() throws Exception {
+    public void startPositionWhenOverNoOfPersons() {
         try {
             row.drawLine(new NaturalNumber(3));
             fail("IllegalArgumentException 에러가 발생해야 한다.");
@@ -34,7 +34,7 @@ class RowTest {
     }
 
     @Test
-    public void drawLineWhenAlreadyDrawingPoint() throws Exception {
+    public void drawLineWhenAlreadyDrawingPoint() {
         try {
             row.drawLine(new NaturalNumber(1));
             row.drawLine(new NaturalNumber(2));
@@ -44,7 +44,7 @@ class RowTest {
         }
     }
     @Test
-    public void moveWhenNoLine() throws Exception {
+    public void moveWhenNoLine() {
         NaturalNumber target = row.move(new Marker(1));
         assertEquals(1, target.getNumber());
 
@@ -53,7 +53,7 @@ class RowTest {
     }
 
     @Test
-    public void moveWhenLineLeft() throws Exception {
+    public void moveWhenLineLeft() {
         // 0 1 1
         row.drawLine(new NaturalNumber(2));
         NaturalNumber target = row.move(new Marker(3));
@@ -61,7 +61,7 @@ class RowTest {
     }
 
     @Test
-    public void moveWhenLineRight() throws Exception {
+    public void moveWhenLineRight() {
         // 0 1 1
         row.drawLine(new NaturalNumber(2));
         NaturalNumber target = row.move(new Marker(2));

@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LadderTest {
     @Test
-    public void moveWhenMultiRows() throws Exception {
+    public void moveWhenMultiRows() {
         // 1 1 0 0
         // 0 1 1 0
         // 0 0 1 1

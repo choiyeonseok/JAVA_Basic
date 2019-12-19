@@ -7,13 +7,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class MarkerTest {
 
     @Test
-    public void testMoveLeft() throws Exception {
+    public void testMoveLeft() {
         Marker marker = new Marker(3);
         assertEquals(new Marker(2), marker.moveLeft());
     }
 
     @Test
-    public void testMoveRight() throws Exception {
+    public void testMoveRight() {
         Marker marker = new Marker(3);
         assertEquals(new Marker(4), marker.moveRight());
     }
