@@ -1,4 +1,4 @@
-package domain;
+package core;
 
 import java.util.Objects;
 
@@ -12,11 +12,11 @@ public class NaturalNumber {
         this.number = number;
     }
 
-    int getNumber() {
+    public int getNumber() {
         return this.number;
     }
 
-    int toArrayIndex() {
+    public int toArrayIndex() {
         return this.number - 1;
     }
 

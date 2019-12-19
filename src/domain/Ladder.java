@@ -1,5 +1,7 @@
 package domain;
 
+import core.NaturalNumber;
+
 class Ladder {
     private Row[] rows;
 
@@ -11,11 +13,14 @@ class Ladder {
     }
 
     void drawLine(NaturalNumber height, NaturalNumber startPosition) {
-        int startIndex = height.toArrayIndex();
-        if (startIndex > rows.length - 1) {
+        if (isOverHeight(height)) {
             throw new IllegalArgumentException(String.format("사다리 최대 높이를 넘어 섰습니다. 현재 값 : %d ", startIndex));
         }
-        rows[startIndex].drawLine(startPosition);
+        rows[height.toArrayIndex()].drawLine(startPosition);
+    }
+
+    private boolean isOverHeight(NaturalNumber height) {
+        return height.toArrayIndex() > rows.length - 1;
     }
 
     Marker run(Marker nthOfPerson) {

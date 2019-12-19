@@ -1,5 +1,6 @@
 package domain;
 
+import core.NaturalNumber;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

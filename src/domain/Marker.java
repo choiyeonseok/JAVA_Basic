@@ -1,6 +1,8 @@
 package domain;
 
-public class Marker extends NaturalNumber{
+import core.NaturalNumber;
+
+public class Marker extends NaturalNumber {
     Marker(int number) {
         super(number);
     }

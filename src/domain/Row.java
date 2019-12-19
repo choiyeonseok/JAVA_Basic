@@ -1,5 +1,7 @@
 package domain;
 
+import core.NaturalNumber;
+
 class Row {
     private Node[] nodes;
 
